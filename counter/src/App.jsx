@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <h1>KRG1A</h1>
+      <h1>counter App</h1>
 
       <h2>Counter: {counter}</h2>
 
