@@ -1,0 +1,67 @@
+
+import java.util.Scanner;
+class Employee {
+    private String name;
+    private double basicSalary;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getBasicSalary() {
+        return basicSalary;
+    }
+
+    public void setBasicSalary(double basicSalary) {
+        if (basicSalary > 0) {
+            this.basicSalary = basicSalary;
+        }
+    }
+
+    public double calculateSalary() {
+        return basicSalary;
+    }
+}
+
+class PermanentEmployee extends Employee {
+    @Override
+    public double calculateSalary() {
+        return getBasicSalary() * 1.20;
+    }
+}
+
+class ContractEmployee extends Employee {
+    @Override
+    public double calculateSalary() {
+        return getBasicSalary() * 1.10;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int T = s.nextInt();
+        s.nextLine();
+        for (int i = 0; i < T; i++) {
+            char type = s.nextLine().charAt(0);
+            String name = s.nextLine();
+            double salary = s.nextDouble();
+            s.nextLine();
+            Employee emp;
+            if (type == 'P') {
+                emp = new PermanentEmployee();
+            } else {
+                emp = new ContractEmployee();
+            }
+            emp.setName(name);
+            emp.setBasicSalary(salary);
+            System.out.println("Employee: " + emp.getName());
+        System.out.printf("FinalSalary:%.2f%n",emp.calculateSalary());
+        }
+        s.close();
+    }
+}
